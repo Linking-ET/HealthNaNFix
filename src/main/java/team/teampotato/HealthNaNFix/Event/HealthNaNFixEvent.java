@@ -10,7 +10,8 @@ public class HealthNaNFixEvent implements ModInitializer {
     @Override
     public void onInitialize() {
         ServerEntityEvents.ENTITY_LOAD.register((entity, world) -> { //
-                getNaNEntity((LivingEntity) entity);
+                if (entity instanceof LivingEntity living) {
+                    getNaNEntity(living);
         });
     }
 
@@ -35,4 +36,5 @@ public class HealthNaNFixEvent implements ModInitializer {
         }
     }
     //谢谢土豆
+
 }
